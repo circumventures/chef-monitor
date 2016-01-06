@@ -1,10 +1,6 @@
 override['sensu']['use_embedded_ruby'] = true
 override['sensu']['version'] = '0.21.0-2'
 override['sensu']['use_ssl'] = true
-override['sensu']['rabbitmq'] = {
-  'user' => 'sensurmq',
-  'password' => 'S3cur3SENrmqpA55!'
-}
 
 # This should be discovered by Chef search
 default['monitor']['master_address'] = nil
