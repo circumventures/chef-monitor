@@ -17,21 +17,21 @@
 # limitations under the License.
 #
 
-include_recipe "monitor::_master_search"
+include_recipe 'monitor::_master_search'
 
-include_recipe "sensu::default"
+include_recipe 'sensu::default'
 
-ip_type = node["monitor"]["use_local_ipv4"] ? "local_ipv4" : "public_ipv4"
+ip_type = node['monitor']['use_local_ipv4'] ? 'local_ipv4' : 'public_ipv4'
 
-client_attributes = node["monitor"]["additional_client_attributes"].to_hash
+client_attributes = node['monitor']['additional_client_attributes'].to_hash
 
 sensu_client node.name do
-  if node.has_key?("cloud")
-    address node["cloud"][ip_type] || node["ipaddress"]
+  if node.key?('cloud')
+    address node['cloud'][ip_type] || node['ipaddress']
   else
-    address node["ipaddress"]
+    address node['ipaddress']
   end
-  subscriptions node["roles"] + ["all"]
+  subscriptions node['roles'] + ['base']
   additional client_attributes
 end
 
@@ -51,16 +51,10 @@ end
   end
 end
 
-if node["monitor"]["use_nagios_plugins"]
-  include_recipe "monitor::_nagios_plugins"
-end
+include_recipe 'monitor::_nagios_plugins' if node['monitor']['use_nagios_plugins']
 
-if node["monitor"]["use_system_profile"]
-  include_recipe "monitor::_system_profile"
-end
+include_recipe 'monitor::_system_profile' if node['monitor']['use_system_profile']
 
-if node["monitor"]["use_statsd_input"]
-  include_recipe "monitor::_statsd"
-end
+include_recipe 'monitor::_statsd' if node['monitor']['use_statsd_input']
 
-include_recipe "sensu::client_service"
+include_recipe 'sensu::client_service'
