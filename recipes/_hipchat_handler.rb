@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: monitor
-# Recipe:: _pagerduty_handler
+# Recipe:: _hipchat_handler
 #
-# Copyright 2013, Sean Porter Consulting
+# Copyright 2016, Circumventures, LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,8 +37,8 @@ template '/etc/sensu/handlers/hipchat.json' do
   variables(
     apikey: node['monitor']['hipchat_api_key'],
     apiversion: node['monitor']['hipchat_api_ver'],
-    room: node['monitor']['hipchat_room'],
-    from: node['monitor']['hipchat_from']
+    hipchatroom: node['monitor']['hipchat_room'],
+    hipchatfrom: node['monitor']['hipchat_from']
   )
 end
 
