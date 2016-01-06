@@ -20,7 +20,7 @@
 include_recipe 'monitor::_disk_checks'
 
 sensu_check 'disk-usage' do
-  command 'check-disk-usage.rb'
+  command 'check-disk-usage.rb -w 90 -c 96'
   handlers ['default']
   interval 60
 end
