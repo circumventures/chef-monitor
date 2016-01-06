@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-sensu_gem 'sensu-handler'
 sensu_gem 'hipchat'
 sensu_gem 'timeout'
 
