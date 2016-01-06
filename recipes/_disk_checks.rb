@@ -20,6 +20,7 @@
 include_recipe 'monitor::default'
 
 sensu_gem 'sensu-plugins-disk-checks'
+sensu_gem 'sys-filesystem'
 
 cookbook_file '/etc/sensu/plugins/check-disk-usage.rb' do
   source 'plugins/check-disk-usage.rb'
