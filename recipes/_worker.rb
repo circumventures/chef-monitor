@@ -63,4 +63,4 @@ check_definitions.each do |check|
   end
 end
 
-include_recipe "sensu::server_service"
+include_recipe "sensu::enterprise_service"

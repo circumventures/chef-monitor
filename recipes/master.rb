@@ -21,9 +21,10 @@ include_recipe 'sensu::rabbitmq'
 include_recipe 'sensu::redis'
 
 include_recipe 'monitor::_worker'
-include_recipe 'monitor::_hipchat_handler'
 
 include_recipe 'sensu::api_service'
-include_recipe 'uchiwa'
+
+include_recipe 'sensu::enterprise_dashboard'
+include_recipe 'sensu::enterprise_dashboard_service'
 
 include_recipe 'monitor::default'

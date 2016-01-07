@@ -25,10 +25,6 @@ cookbook_file '/etc/sensu/handlers/hipchat.rb' do
   mode 0755
 end
 
-sensu_snippet 'hipchat' do
-  content(api_key: node['monitor']['hipchat_api_key'])
-end
-
 template '/etc/sensu/handlers/hipchat.json' do
   source 'hipchat.json.erb'
   mode 0600
