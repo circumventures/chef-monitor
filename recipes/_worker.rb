@@ -74,14 +74,14 @@ end
 
 node['monitor']['hipchat_notifications'].each do |notification|
   template node['sensu']['directory'] + '/conf.d/handlers/definitions/hipchat-' +
-    notification['name'].tr(' ', '_') + '-' +
+    notification['username'].tr(' ', '_') + '-' +
     notification['room'].tr(' ', '_') + '.json' do
       source 'hipchat.json'
       mode 0600
       owner node['sensu']['user']
       group node['sensu']['group']
       variables(
-        username: notification['name'],
+        username: notification['username'],
         room: notification['room'],
         apitoken: node['monitor']
       )
