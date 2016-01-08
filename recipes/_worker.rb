@@ -63,5 +63,30 @@ check_definitions.each do |check|
   end
 end
 
+# Create directory for handler definitions
+directory node['sensu']['directory'] + '/conf.d/handlers/definitions' do
+  mode 0700
+  owner node['sensu']['user']
+  group node['sensu']['group']
+  recursive true
+  action :create
+end
+
+node['monitor']['hipchat_notifications'].each do |notification|
+  template node['sensu']['directory'] + '/conf.d/handlers/definitions/hipchat-' +
+    notification['name'].downcase.tr(' ', '_') + '-' +
+    notification['room'].downcase.tr(' ', '_') + '.json' do
+      source 'hipchat.json'
+      mode 0600
+      owner node['sensu']['user']
+      group node['sensu']['group']
+      variables(
+        username: notification['name'],
+        room: notification['room'],
+        apitoken: node['monitor']
+      )
+    end
+end
+
 include_recipe "sensu::enterprise"
 include_recipe "sensu::enterprise_service"

@@ -22,8 +22,6 @@ include_recipe 'sensu::redis'
 
 include_recipe 'monitor::_worker'
 
-include_recipe 'sensu::api_service'
-
 include_recipe 'sensu::enterprise_dashboard'
 include_recipe 'sensu::enterprise_dashboard_service'
 
