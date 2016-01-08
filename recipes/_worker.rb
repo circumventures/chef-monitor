@@ -86,7 +86,6 @@ if node['monitor']['hipchat_notifications']
           room: notification['room'],
           apitoken: node['monitor']['hipchat_token']
         )
-        notifies :create, 'ruby_block[sensu_service_trigger]', :delayed if sensu_service_trigger
       end
   end
 end
