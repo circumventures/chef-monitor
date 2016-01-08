@@ -13,3 +13,4 @@ default['monitor']['hipchat_notifications'] = [
     room: 'eComm - Frontend Dev Team'
   }
 ]
+default['monitor']['hipchat_token'] = 'qs44ZwTOb3G1r5y7xFguSHS2CQy6aZVf2N8e4G00'
