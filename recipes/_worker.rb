@@ -64,7 +64,7 @@ check_definitions.each do |check|
 end
 
 # Create directory for handler definitions
-directory node['sensu']['directory'] + '/conf.d/handlers/definitions' do
+directory node['sensu']['directory'] + '/handlers' do
   mode 0700
   owner node['sensu']['user']
   group node['sensu']['group']
@@ -73,19 +73,16 @@ directory node['sensu']['directory'] + '/conf.d/handlers/definitions' do
 end
 
 if node['monitor']['hipchat_notifications']
-  node['monitor']['hipchat_notifications'].each do |notification|
-    template node['sensu']['directory'] + '/conf.d/handlers/definitions/hipchat-' +
-      notification['username'].downcase.tr(' ', '_') + '-' +
-      notification['room'].downcase.tr(' ', '_') + '.json' do
-        source 'hipchat.json.erb'
-        mode 0600
-        owner node['sensu']['user']
-        group node['sensu']['group']
-        variables(
-          username: notification['username'],
-          room: notification['room']
-        )
-      end
+  template node['sensu']['directory'] + '/handlers/hipchat.json' do
+    source 'hipchat.json.erb'
+    mode 0600
+    owner node['sensu']['user']
+    group node['sensu']['group']
+    variables(
+      username: node['monitor']['hipchat']['username'],
+      defaultroom: node['monitor']['hipchat']['defaultroom'],
+      apitoken: node['monitor']['hipchat']['apitoken']
+    )
   end
 end
 
