@@ -72,7 +72,7 @@ directory node['sensu']['directory'] + '/handlers' do
   action :create
 end
 
-if node['monitor']['hipchat_notifications']
+if node['monitor']['hipchat']
   template node['sensu']['directory'] + '/handlers/hipchat.json' do
     source 'hipchat.json.erb'
     mode 0600
