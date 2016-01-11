@@ -86,5 +86,18 @@ if node['monitor']['hipchat']
   end
 end
 
+if node['monitor']['email']
+  template node['sensu']['directory'] + '/handlers/email.json' do
+    source 'email.json.erb'
+    mode 0600
+    owner node['sensu']['user']
+    group node['sensu']['group']
+    variables(
+      emailfrom: node['monitor']['email']['to'],
+      emailto: node['monitor']['email']['from']
+    )
+  end
+end
+
 include_recipe "sensu::enterprise"
 include_recipe "sensu::enterprise_service"
