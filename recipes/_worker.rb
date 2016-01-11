@@ -64,7 +64,7 @@ check_definitions.each do |check|
 end
 
 # Create directory for handler definitions
-directory node['sensu']['directory'] + '/handlers' do
+directory node['sensu']['directory'] + '/conf.d/handlers' do
   mode 0700
   owner node['sensu']['user']
   group node['sensu']['group']
