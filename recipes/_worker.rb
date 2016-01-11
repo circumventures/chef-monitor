@@ -83,8 +83,7 @@ if node['monitor']['hipchat_notifications']
         group node['sensu']['group']
         variables(
           username: notification['username'],
-          room: notification['room'],
-          apitoken: node['monitor']['hipchat_token']
+          room: notification['room']
         )
       end
   end
