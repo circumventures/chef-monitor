@@ -70,73 +70,73 @@ end
 
 ### Metrics
 
-sensu_check 'load_metrics' do
-  type 'metric'
-  command 'metrics-load.rb --scheme :::scheme_prefix::::::name:::.load'
-  handlers ['metrics']
-  interval node['monitor']['metric_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['metric_occurrences']
-  )
-  not_if { node['monitor']['use_system_profile'] }
-end
+#sensu_check 'load_metrics' do
+#  type 'metric'
+#  command 'metrics-load.rb --scheme :::scheme_prefix::::::name:::.load'
+#  handlers ['metrics']
+#  interval node['monitor']['metric_interval']
+#  subscribers ['base']
+#  additional(
+#    occurrences: node['monitor']['metric_occurrences']
+#  )
+#  not_if { node['monitor']['use_system_profile'] }
+#end
 
-sensu_check 'cpu_metrics' do
-  type 'metric'
-  command 'metrics-cpu.rb --scheme :::scheme_prefix::::::name:::.cpu'
-  handlers ['metrics']
-  interval node['monitor']['metric_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['metric_occurrences']
-  )
-  not_if { node['monitor']['use_system_profile'] }
-end
+#sensu_check 'cpu_metrics' do
+#  type 'metric'
+#  command 'metrics-cpu.rb --scheme :::scheme_prefix::::::name:::.cpu'
+#  handlers ['metrics']
+#  interval node['monitor']['metric_interval']
+#  subscribers ['base']
+#  additional(
+#    occurrences: node['monitor']['metric_occurrences']
+#  )
+#  not_if { node['monitor']['use_system_profile'] }
+#end
 
-sensu_check 'memory_metrics' do
-  type 'metric'
-  command 'metrics-memory.rb --scheme :::scheme_prefix::::::name:::.memory'
-  handlers ['metrics']
-  interval node['monitor']['metric_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['metric_occurrences']
-  )
-  not_if { node['monitor']['use_system_profile'] }
-end
+#sensu_check 'memory_metrics' do
+#  type 'metric'
+#  command 'metrics-memory.rb --scheme :::scheme_prefix::::::name:::.memory'
+#  handlers ['metrics']
+#  interval node['monitor']['metric_interval']
+#  subscribers ['base']
+#  additional(
+#    occurrences: node['monitor']['metric_occurrences']
+#  )
+#  not_if { node['monitor']['use_system_profile'] }
+#end
 
-sensu_check 'interface_metrics' do
-  type 'metric'
-  command 'metrics-interface.rb --scheme :::scheme_prefix::::::name:::.interface'
-  handlers ['metrics']
-  interval node['monitor']['metric_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['metric_occurrences']
-  )
-  not_if { node['monitor']['use_system_profile'] }
-end
+#sensu_check 'interface_metrics' do
+#  type 'metric'
+#  command 'metrics-interface.rb --scheme :::scheme_prefix::::::name:::.interface'
+#  handlers ['metrics']
+#  interval node['monitor']['metric_interval']
+#  subscribers ['base']
+#  additional(
+#    occurrences: node['monitor']['metric_occurrences']
+#  )
+#  not_if { node['monitor']['use_system_profile'] }
+#end
 
-sensu_check 'disk_metrics' do
-  type 'metric'
-  command 'metrics-disk.rb --scheme :::scheme_prefix::::::name:::.disk'
-  handlers ['metrics']
-  interval node['monitor']['metric_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['metric_occurrences']
-  )
-  not_if { node['monitor']['use_system_profile'] }
-end
+#sensu_check 'disk_metrics' do
+#  type 'metric'
+#  command 'metrics-disk.rb --scheme :::scheme_prefix::::::name:::.disk'
+#  handlers ['metrics']
+#  interval node['monitor']['metric_interval']
+#  subscribers ['base']
+#  additional(
+#    occurrences: node['monitor']['metric_occurrences']
+#  )
+#  not_if { node['monitor']['use_system_profile'] }
+#end
 
-sensu_check 'disk_usage_metrics' do
-  type 'metric'
-  command 'metrics-disk-usage.rb -l --scheme :::scheme_prefix::::::name:::.disk_usage'
-  handlers ['metrics']
-  interval node['monitor']['metric_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['metric_occurrences']
-  )
-end
+#sensu_check 'disk_usage_metrics' do
+#  type 'metric'
+#  command 'metrics-disk-usage.rb -l --scheme :::scheme_prefix::::::name:::.disk_usage'
+#  handlers ['metrics']
+#  interval node['monitor']['metric_interval']
+#  subscribers ['base']
+#  additional(
+#    occurrences: node['monitor']['metric_occurrences']
+#  )
+#end
