@@ -5,7 +5,7 @@ sensu_gem 'ohai'
 
 sensu_check 'ssh' do
   # file '/system/check-disk.rb'
-  command 'check-banner.rb'
+  command 'check-banner.rb -p ' + node['openssh']['server']['port']
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
