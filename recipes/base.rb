@@ -10,7 +10,6 @@ node['openssh']['server']['port'].each do |port|
     handlers ['default']
     interval node['monitor']['default_interval']
     subscribers ['base']
-    contacts 'devops'
     additional(
       occurrences: node['monitor']['default_occurrences']
     )
@@ -23,7 +22,6 @@ sensu_check 'disk_usage' do
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
-  contacts 'devops'
   additional(
     occurrences: node['monitor']['default_occurrences']
   )
@@ -35,7 +33,6 @@ sensu_check 'memory' do
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
-  contacts 'devops'
   additional(
     occurrences: node['monitor']['default_occurrences']
   )
@@ -47,7 +44,6 @@ sensu_check 'swap' do
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
-  contacts 'devops'
   additional(
     occurrences: node['monitor']['default_occurrences']
   )
@@ -59,7 +55,6 @@ sensu_check 'load' do
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
-  contacts 'devops'
   additional(
     occurrences: node['monitor']['default_occurrences']
   )
@@ -70,7 +65,6 @@ sensu_check 'fs_writeable_tmp' do
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
-  contacts 'devops'
   additional(
     occurrences: node['monitor']['default_occurrences']
   )
