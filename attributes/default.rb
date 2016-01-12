@@ -16,8 +16,12 @@ default['monitor']['use_statsd_input'] = false
 
 default['monitor']['sudo_commands'] = []
 
-default['monitor']['default_handlers'] = ['debug']
+default['monitor']['default_handlers'] = ['hipchat']
 default['monitor']['metric_handlers'] = ['debug']
+default['monitor']['metric_interval'] = 60
+default['monitor']['metric_occurrences'] = 2
+default['monitor']['default_interval'] = 60
+default['monitor']['default_occurrences'] = 2
 
 default['monitor']['client_extension_dir'] = '/etc/sensu/extensions/client'
 default['monitor']['server_extension_dir'] = '/etc/sensu/extensions/server'

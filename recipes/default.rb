@@ -35,26 +35,46 @@ sensu_client node.name do
   additional client_attributes
 end
 
-%w(
-  check-procs.rb
-  check-banner.rb
-  check-http.rb
-  check-log.rb
-  check-mtime.rb
-  check-tail.rb
-  check-fs-writable.rb
-  check-disk-usage.rb
-).each do |default_plugin|
-  cookbook_file "/etc/sensu/plugins/#{default_plugin}" do
-    source "plugins/#{default_plugin}"
-    mode 0755
-  end
+include_recipe 'build-essential::default'
+
+sensu_gem 'sensu-plugins-network-checks' do
+  version '0.1.1'
+end
+
+sensu_gem 'sensu-plugins-load-checks' do
+  version '0.0.4'
+end
+
+sensu_gem 'sensu-plugins-cpu-checks' do
+  version '0.0.3'
+end
+
+sensu_gem 'sensu-plugins-process-checks' do
+  version '0.0.6'
+end
+
+sensu_gem 'sensu-plugins-memory-checks' do
+  version '0.0.7'
+end
+
+sensu_gem 'sensu-plugins-disk-checks' do
+  version '1.1.2'
+end
+
+sensu_gem 'sensu-plugins-filesystem-checks' do
+  version '0.1.0'
+end
+
+sensu_gem 'sensu-plugins-vmstats' do
+  version '0.0.3'
+end
+
+sensu_gem 'sensu-plugins-io-checks' do
+  version '0.0.2'
 end
 
 include_recipe 'monitor::_nagios_plugins' if node['monitor']['use_nagios_plugins']
-
 include_recipe 'monitor::_system_profile' if node['monitor']['use_system_profile']
-
 include_recipe 'monitor::_statsd' if node['monitor']['use_statsd_input']
 
 include_recipe 'sensu::client_service'
