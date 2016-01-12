@@ -67,7 +67,7 @@ directory node['sensu']['directory'] + '/conf.d/handlers' do
 end
 
 if node['monitor']['hipchat']
-  template node['sensu']['directory'] + '/handlers/hipchat.json' do
+  template node['sensu']['directory'] + '/conf.d/handlers/hipchat.json' do
     source 'hipchat.json.erb'
     mode 0600
     owner node['sensu']['user']
@@ -81,7 +81,7 @@ if node['monitor']['hipchat']
 end
 
 if node['monitor']['email']
-  template node['sensu']['directory'] + '/handlers/email.json' do
+  template node['sensu']['directory'] + '/conf.d/handlers/email.json' do
     source 'email.json.erb'
     mode 0600
     owner node['sensu']['user']
@@ -92,6 +92,23 @@ if node['monitor']['email']
     )
   end
 end
+
+# Create directory for contact definitions
+directory node['sensu']['directory'] + '/conf.d/contacts' do
+  mode 0700
+  owner node['sensu']['user']
+  group node['sensu']['group']
+  recursive true
+  action :create
+end
+
+template node['sensu']['directory'] + '/contacts/contacts.json' do
+  source 'contacts.json.erb'
+  mode 0600
+  owner node['sensu']['user']
+  group node['sensu']['group']
+end
+
 
 include_recipe "sensu::enterprise"
 include_recipe "sensu::enterprise_service"
