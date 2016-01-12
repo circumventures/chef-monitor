@@ -102,7 +102,7 @@ directory node['sensu']['directory'] + '/conf.d/contacts' do
   action :create
 end
 
-template node['sensu']['directory'] + '/contacts/contacts.json' do
+template node['sensu']['directory'] + '/conf.d/contacts/contacts.json' do
   source 'contacts.json.erb'
   mode 0600
   owner node['sensu']['user']
