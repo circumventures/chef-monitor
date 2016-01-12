@@ -3,15 +3,17 @@ sensu_gem 'ohai'
 
 ### Checks
 
-sensu_check 'ssh' do
-  # file '/system/check-disk.rb'
-  command 'check-banner.rb -p ' + node['openssh']['server']['port'].first
-  handlers ['default']
-  interval node['monitor']['default_interval']
-  subscribers ['base']
-  additional(
-    occurrences: node['monitor']['default_occurrences']
-  )
+node['openssh']['server']['port'].each do |port|
+  sensu_check 'ssh' + port do
+    # file '/system/check-disk.rb'
+    command 'check-banner.rb -p ' + port
+    handlers ['default']
+    interval node['monitor']['default_interval']
+    subscribers ['base']
+    additional(
+      occurrences: node['monitor']['default_occurrences']
+    )
+  end
 end
 
 sensu_check 'disk_usage' do
