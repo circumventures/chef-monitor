@@ -21,12 +21,15 @@ end
 
 sensu_check 'disk_usage' do
   # file '/system/check-disk.rb'
-  command 'check-disk-usage.rb -w 80 -c 90 -x nfs,tmpfs,fuse'
+  command 'check-disk-usage.rb -w 90 -c 96 -x nfs,tmpfs,fuse'
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
-    occurrences: node['monitor']['default_occurrences']
+    handle_when: {
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 3600
+    }
   )
 end
 
@@ -37,7 +40,10 @@ sensu_check 'memory' do
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
-    occurrences: node['monitor']['default_occurrences']
+    handle_when: {
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 3600
+    }
   )
 end
 
@@ -48,7 +54,10 @@ sensu_check 'swap' do
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
-    occurrences: node['monitor']['default_occurrences']
+    handle_when: {
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 3600
+    }
   )
 end
 
@@ -59,7 +68,10 @@ sensu_check 'load' do
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
-    occurrences: node['monitor']['default_occurrences']
+    handle_when: {
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 3600
+    }
   )
 end
 
@@ -69,7 +81,10 @@ sensu_check 'fs_writeable_tmp' do
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
-    occurrences: node['monitor']['default_occurrences']
+    handle_when: {
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 3600
+    }
   )
 end
 
