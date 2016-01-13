@@ -109,21 +109,5 @@ template node['sensu']['directory'] + '/conf.d/contacts/contacts.json' do
   group node['sensu']['group']
 end
 
-# Create directory for contact definitions
-directory node['sensu']['directory'] + '/conf.d/filters' do
-  mode 0700
-  owner node['sensu']['user']
-  group node['sensu']['group']
-  recursive true
-  action :create
-end
-
-template node['sensu']['directory'] + '/conf.d/filters/filters.json' do
-  source 'filters.json.erb'
-  mode 0600
-  owner node['sensu']['user']
-  group node['sensu']['group']
-end
-
 include_recipe "sensu::enterprise"
 include_recipe "sensu::enterprise_service"
