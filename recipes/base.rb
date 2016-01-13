@@ -10,6 +10,7 @@ node['openssh']['server']['port'].each do |port|
     handlers ['default']
     interval node['monitor']['default_interval']
     subscribers ['base']
+    filters ['recurrence']
     additional(
       occurrences: node['monitor']['default_occurrences']
     )
