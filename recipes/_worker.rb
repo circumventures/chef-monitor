@@ -109,6 +109,19 @@ if node['monitor']['email']
   end
 end
 
+if node['monitor']['pagerduty']
+  template node['sensu']['directory'] + '/conf.d/handlers/pagerduty.json' do
+    source 'pagerduty.json.erb'
+    mode 0600
+    owner node['sensu']['user']
+    group node['sensu']['group']
+    variables(
+      service_key: node['monitor']['pagerduty']['service_key'],
+      timeout: node['monitor']['pagerduty']['timeout']
+    )
+  end
+end
+
 # Create directory for contact definitions
 directory node['sensu']['directory'] + '/conf.d/contacts' do
   mode 0700
