@@ -80,6 +80,22 @@ if node['monitor']['hipchat']
   end
 end
 
+if node['monitor']['slack']
+  template node['sensu']['directory'] + '/conf.d/handlers/slack.json' do
+    source 'slack.json.erb'
+    mode 0600
+    owner node['sensu']['user']
+    group node['sensu']['group']
+    variables(
+      username: node['monitor']['slack']['username'],
+      channel: node['monitor']['slack']['channel'],
+      webhook_url: node['monitor']['slack']['webhook_url'],
+      icon_url: node['monitor']['slack']['icon_url'],
+      timeout: node['monitor']['slack']['timeout']
+    )
+  end
+end
+
 if node['monitor']['email']
   template node['sensu']['directory'] + '/conf.d/handlers/email.json' do
     source 'email.json.erb'
