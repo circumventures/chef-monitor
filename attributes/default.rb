@@ -16,7 +16,7 @@ default['monitor']['use_statsd_input'] = false
 
 default['monitor']['sudo_commands'] = []
 
-default['monitor']['default_handlers'] = ['hipchat']
+default['monitor']['default_handlers'] = ['slack']
 default['monitor']['metric_handlers'] = ['debug']
 default['monitor']['metric_interval'] = 60
 default['monitor']['metric_occurrences'] = 2
