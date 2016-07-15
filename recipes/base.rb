@@ -21,7 +21,7 @@ end
 
 sensu_check 'disk_usage' do
   # file '/system/check-disk.rb'
-  command 'check-disk-usage.rb -w 90 -c 96 -x nfs,tmpfs,fuse'
+  command 'check-disk-usage.rb -w 95 -c 99 -x nfs,tmpfs,fuse'
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
