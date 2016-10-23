@@ -12,8 +12,7 @@ node['openssh']['server']['port'].each do |port|
     subscribers ['base']
     additional(
       handle_when: {
-        occurrences: node['monitor']['default_occurrences'],
-        reset: 3600
+        occurrences: node['monitor']['default_occurrences']
       }
     )
   end
@@ -21,42 +20,39 @@ end
 
 sensu_check 'disk_usage' do
   # file '/system/check-disk.rb'
-  command 'check-disk-usage.rb -w 95 -c 99 -x nfs,tmpfs,fuse'
+  command 'check-disk-usage.rb -w 95 -c 99 -x nfs,tmpfs,fuse -p /run/lxcfs'
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences'],
-      reset: 3600
+      occurrences: node['monitor']['default_occurrences']
     }
   )
 end
 
 sensu_check 'memory' do
   # file '/system/check-mem.rb'
-  command 'check-memory.rb -w 15 -c 10'
+  command 'check-memory-percent.rb -w 70 -c 80'
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences'],
-      reset: 3600
+      occurrences: node['monitor']['default_occurrences']
     }
   )
 end
 
 sensu_check 'swap' do
   # file '/system/check-mem.rb'
-  command 'check-swap.rb -w 60 -c 50'
+  command 'check-swap-percent.rb -w 70 -c 80'
   handlers ['default']
   interval node['monitor']['default_interval']
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences'],
-      reset: 3600
+      occurrences: node['monitor']['default_occurrences']
     }
   )
 end
@@ -69,8 +65,7 @@ sensu_check 'load' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences'],
-      reset: 3600
+      occurrences: node['monitor']['default_occurrences']
     }
   )
 end
@@ -82,8 +77,7 @@ sensu_check 'fs_writeable_tmp' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences'],
-      reset: 3600
+      occurrences: node['monitor']['default_occurrences']
     }
   )
 end
