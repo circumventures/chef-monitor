@@ -1,5 +1,5 @@
 override['sensu']['use_embedded_ruby'] = true
-override['sensu']['version'] = '0.21.0-2'
+override['sensu']['version'] = '0.26'
 override['sensu']['use_ssl'] = true
 override['sensu']['client_deregister_on_stop'] = true
 
