@@ -35,6 +35,10 @@ sensu_handler "metrics" do
   handlers node["monitor"]["metric_handlers"]
 end
 
+sensu_gem 'sensu-plugins-slack' do
+  version '1.0.0'
+end
+
 check_definitions = case
 when Chef::Config[:solo]
   data_bag("sensu_checks").map do |item|

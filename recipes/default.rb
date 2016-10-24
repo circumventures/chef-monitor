@@ -77,6 +77,10 @@ sensu_gem 'sensu-plugins-http' do
   version '1.0.0'
 end
 
+sensu_gem 'sensu-plugins-chef' do
+  version '1.0.0'
+end
+
 include_recipe 'monitor::_nagios_plugins' if node['monitor']['use_nagios_plugins']
 include_recipe 'monitor::_system_profile' if node['monitor']['use_system_profile']
 include_recipe 'monitor::_statsd' if node['monitor']['use_statsd_input']
