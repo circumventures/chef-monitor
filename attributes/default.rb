@@ -1,6 +1,6 @@
 override['sensu']['use_embedded_ruby'] = true
 override['sensu']['version'] = '0.26.3-1'
-override['sensu']['enterprise-dashboard']['version'] = '1.12.0-1'
+override['sensu']['enterprise-dashboard']['version'] = '1:1.12.0-1'
 override['sensu']['use_ssl'] = true
 override['sensu']['client_deregister_on_stop'] = true
 
