@@ -16,5 +16,14 @@ default['monitor']['slack'] = {
   'username' => 'sensu',
   'channel' => '#sensu',
   'timeout' => 10,
-  'icon_url' => 'http://www.gravatar.com/avatar/9b37917076cee4e2d331a785f3426640'
+  'icon_url' => 'http://www.gravatar.com/avatar/9b37917076cee4e2d331a785f3426640',
+  'payload_template' => {
+    'attachments' =>
+    {
+      'fallback' => '<%= @event["check"]["output"] %>',
+      'color' => '<%= color %>',
+      'title' => '<%= @event["check"]["name"] %> (<%= @event["client"]["name"] %>)',
+      'text' => '<%= @event["check"]["output"].gsub(\'"\', \'\\"\') %>'
+    }
+  }
 }
