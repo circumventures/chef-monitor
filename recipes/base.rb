@@ -12,7 +12,8 @@ node['openssh']['server']['port'].each do |port|
     subscribers ['base']
     additional(
       handle_when: {
-        occurrences: node['monitor']['default_occurrences']
+        occurrences: node['monitor']['default_occurrences'],
+        reset: 2_592_000
       }
     )
   end
@@ -26,7 +27,8 @@ sensu_check 'disk_usage' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences']
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 2_592_000
     }
   )
 end
@@ -39,7 +41,8 @@ sensu_check 'memory' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences']
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 2_592_000
     }
   )
 end
@@ -52,7 +55,8 @@ sensu_check 'swap' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences']
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 2_592_000
     }
   )
 end
@@ -65,7 +69,8 @@ sensu_check 'load' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences']
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 2_592_000
     }
   )
 end
@@ -77,7 +82,8 @@ sensu_check 'fs_writeable_tmp' do
   subscribers ['base']
   additional(
     handle_when: {
-      occurrences: node['monitor']['default_occurrences']
+      occurrences: node['monitor']['default_occurrences'],
+      reset: 2_592_000
     }
   )
 end
