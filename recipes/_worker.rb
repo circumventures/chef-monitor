@@ -39,6 +39,10 @@ sensu_gem 'sensu-plugins-slack' do
   version '1.0.0'
 end
 
+sensu_gem 'sensu-plugins-chef' do
+  version '1.0.0'
+end
+
 check_definitions = case
 when Chef::Config[:solo]
   data_bag("sensu_checks").map do |item|
