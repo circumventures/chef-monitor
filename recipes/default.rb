@@ -38,23 +38,23 @@ end
 include_recipe 'build-essential::default'
 
 sensu_gem 'sensu-plugins-network-checks' do
-  version '0.1.1'
+  version '1.1.0'
 end
 
 sensu_gem 'sensu-plugins-load-checks' do
-  version '0.0.4'
+  version '1.0.0'
 end
 
 sensu_gem 'sensu-plugins-cpu-checks' do
-  version '0.0.3'
+  version '1.0.0'
 end
 
 sensu_gem 'sensu-plugins-process-checks' do
-  version '0.0.6'
+  version '1.0.0'
 end
 
 sensu_gem 'sensu-plugins-memory-checks' do
-  version '0.0.7'
+  version '1.0.2'
 end
 
 sensu_gem 'sensu-plugins-disk-checks' do
@@ -62,7 +62,7 @@ sensu_gem 'sensu-plugins-disk-checks' do
 end
 
 sensu_gem 'sensu-plugins-filesystem-checks' do
-  version '0.1.0'
+  version '0.2.0'
 end
 
 sensu_gem 'sensu-plugins-vmstats' do
@@ -70,7 +70,7 @@ sensu_gem 'sensu-plugins-vmstats' do
 end
 
 sensu_gem 'sensu-plugins-io-checks' do
-  version '0.0.2'
+  version '1.0.0'
 end
 
 include_recipe 'monitor::_nagios_plugins' if node['monitor']['use_nagios_plugins']
